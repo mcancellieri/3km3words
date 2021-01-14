@@ -159,6 +159,17 @@
 }
 
 .pin {
-  height:1px;
-  width:1px;
+  fill: #c23241;
+}
+.card-container {
+  border:1px solid black;
+}
+.card {
+  fill:white;
+  stroke-width:1;
+  stroke:#ddd;
+}
+
+.cardText {
+  fill:black;
 }
