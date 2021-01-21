@@ -5,16 +5,17 @@ import React from "react";
 import Map from "../components/Map";
 
 export default function Home() {
+
     return (
         <div className={styles.container}>
             <Head>
-                <title>Create Next App</title>
+                <title>3KM3Words</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
             <main className={styles.main}>
                 <h1 className={styles.logo}>
-                    <img src="logo.svg" alt="3km3words logo"/>
+                    <img src={"logo.svg"} alt="3km3words logo"/>
                 </h1>
                 <div className={styles.questions}>
                     <h2 className={styles.question}>

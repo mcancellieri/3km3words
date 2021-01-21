@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "exif": "^0.6.0",
+    "fast-csv": "^4.3.6",
     "next": "10.0.5",
     "node-iptc": "^1.0.5",
     "react": "17.0.1",

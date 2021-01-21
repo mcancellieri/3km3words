@@ -124,7 +124,7 @@
 }
 
 .map {
-  width:80%;
+    width: 100%;
   position:relative;
 }
 
@@ -172,4 +172,5 @@
 
 .cardText {
   fill:black;
+    font: bold 12px sans-serif;
 }
