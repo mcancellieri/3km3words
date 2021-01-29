@@ -4,12 +4,14 @@ import {useRouter} from 'next/router'
 import {Photos} from "../components/Location";
 import React from "react";
 import Slider from "../components/Slider";
+import {Header} from "../components/Header";
+import {Footer} from "../components/Footer";
 
 export default function Gallery() {
     const router = useRouter();
     let selected = Photos[0].title;
-    if (router.query.selected) {
-        selected = router.query.target
+    if (router.query.s) {
+        selected = router.query.s
     }
 
     return (<div className={styles.container}>
@@ -18,13 +20,12 @@ export default function Gallery() {
                 <title>3KM3Words</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <div className={styles.main}>
+            <main className={styles.main}>
+                <Header/>
                 <Slider selected={selected}/>
 
-            </div>
-            <footer className={styles.footer}>
-                2021 Matteo Cancellieri
-            </footer>
+            </main>
+            <Footer/>
         </div>
     )
 }

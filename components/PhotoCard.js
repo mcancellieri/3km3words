@@ -22,8 +22,12 @@ export default class PhotoCard extends React.Component {
         });
     }
 
-    showGallery() {
-        this.state.router.push("Gallery")
+    showGallery(event) {
+        console.log(event.target.href);
+        return this.state.router.push({
+            pathname: "Gallery",
+            query: {s: event.target.href.baseVal.replace("_thumb.webp", "")}
+        });
     }
 
     render() {

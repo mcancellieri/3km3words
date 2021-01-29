@@ -11,6 +11,7 @@ function convert(path) {
                 throw err
             }
             var iptc_data = iptc(data);
+            console.log(path);
             filename = iptc_data.object_name.replace(/\s/g, ".").toLowerCase();
             let locationObject = findByName(filename);
             if (locationObject == null) {

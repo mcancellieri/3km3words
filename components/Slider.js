@@ -11,6 +11,7 @@ export default class Slider extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log(props.selected);
         this.state = {
             selected: props.selected,
             screenWidth: 0,
@@ -30,47 +31,39 @@ export default class Slider extends React.Component {
     next() {
         let currentIndex = Slider.getCurrentIndex(this.state.selected);
         let newIndex = (currentIndex + 1) % Photos.length;
-        console.log(Photos[newIndex]);
         this.setState({selected: Photos[newIndex].title})
     }
 
     prev() {
         let currentIndex = Slider.getCurrentIndex(this.state.selected);
         let newIndex = ((currentIndex === 0) ? 0 : currentIndex - 1) % Photos.length;
-        console.log(newIndex);
         this.setState({selected: Photos[newIndex].title})
     }
 
     componentDidMount() {
-        console.log(window);
         this.setState({screenWidth: window.innerWidth, screenHeight: window.innerHeight})
     }
 
     getScaled(width, height) {
-        console.log(this.state.screenHeight);
-        console.log(height);
         if (this.state.screenHeight < height) {
-            let newHeight = this.state.screenHeight * .80;
+            let newHeight = this.state.screenHeight * .60;
             let newWidth = width * newHeight / height;
             return {"width": newWidth, "height": newHeight}
         } else {
             return {"width": width, "height": height}
         }
-
     }
 
 
     render() {
-        console.log(this.state.selected);
 
         return (
             <div className={styles.slider}>
-                <div className={styles.next} onClick={this.next.bind(this)}> next</div>
-                <div className={styles.prev} onClick={this.prev.bind(this)}> prev</div>
+                <div className={styles.next} onClick={this.next.bind(this)}><img src={"prev.svg"} alt={"next"}/></div>
+                <div className={styles.prev} onClick={this.prev.bind(this)}><img src={"prev.svg"} alt={"prev"}/></div>
                 <div className={styles.photoCardWrapper}>
                     {Photos.map((photo) =>
-
-                        <div id={photo.title} className={styles.photoCard}
+                        <div key={photo.title} id={photo.title} className={styles.photoCard}
                              style={{display: this.state.selected === photo.title ? "block" : "none"}}>
                             <Image src={"/" + photo.title + ".webp"} layout="intrinsic"
 

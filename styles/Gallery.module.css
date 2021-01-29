@@ -10,7 +10,7 @@
 
 .main {
     width: 100%;
-    padding: 5rem 0;
+    padding: 3rem 0;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -48,26 +48,47 @@
 
 .prev {
     order: 1;
-    width: 10%;
+    width: 30%;
     height: 100%;
+
+
 }
 
+.prev img, .next img {
+    height: 30vh;
+}
 .next {
     order: 3;
-    width: 10%;
+    width: 30%;
     height: 100%;
-
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .photoCardWrapper {
     order: 1;
     flex-grow: 1;
+    width: 40%;
+}
+
+@media (max-width: 600px) {
+    .prev img, .next img {
+        height: 5vh;
+    }
+
+    .photoCardWrapper {
+        width: 100%;
+    }
 }
 
 .photoCard {
     flex: 1 1;
     margin: auto;
     text-align: center;
+    font-size: 2.5vw;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
 }
 
 .photoCard img {
