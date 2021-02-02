@@ -10,11 +10,16 @@ function convert(path) {
             if (err) {
                 throw err
             }
-            var iptc_data = iptc(data);
+            let iptc_data = iptc(data);
             console.log(path);
-            filename = iptc_data.object_name.replace(/\s/g, ".").toLowerCase();
+            let filename = iptc_data.object_name.replace(/\s/g, ".").toLowerCase();
+            if (filename === "too-long-1") {
+                //custom approach as iptc doesn't seem to pick long names?
+                filename = "assurance.unpacked.centuries"
+            }
             let locationObject = findByName(filename);
             if (locationObject == null) {
+                console.log(iptc_data);
                 throw Error(filename + "Shouldn't return null")
             }
 
@@ -34,16 +39,16 @@ function convert(path) {
 
 const locations = [];
 let results = [];
-fs.createReadStream("public/data/locations.tsv")
+fs.createReadStream("data/locations.tsv")
     .pipe(csv.parse({headers: true, delimiter: '\t'}))
     .on('error', error => console.error(error))
     .on('data', row => locations.push(row))
     .on('end', () => start());
 
 function start() {
-    fs.readdir("public/photos", (err, files) => {
+    fs.readdir("photos", (err, files) => {
         for (let i in files) {
-            convert("public/photos/" + files[i])
+            convert("photos/" + files[i])
         }
         console.log("printing results");
 
@@ -53,7 +58,7 @@ function start() {
 
 function findByName(name) {
     for (let location of locations) {
-        if (location.title === name) {
+        if (location.filename === name) {
             return location
         }
     }

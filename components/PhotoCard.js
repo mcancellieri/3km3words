@@ -25,7 +25,7 @@ export default class PhotoCard extends React.Component {
     showGallery(event) {
         console.log(event.target.href);
         return this.state.router.push({
-            pathname: "Gallery",
+            pathname: "gallery",
             query: {s: event.target.href.baseVal.replace("_thumb.webp", "")}
         });
     }

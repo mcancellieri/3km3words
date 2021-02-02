@@ -22,7 +22,7 @@ export class Header extends React.Component {
 
     showSquares() {
         return this.state.router.push({
-            pathname: "Squares",
+            pathname: "squares",
         });
     }
 
@@ -30,7 +30,17 @@ export class Header extends React.Component {
         console.log(this.props.router);
         console.log(this.props.router.pathname);
         return <Head title="Bake Shave Sushi" className={styles.header}>
-            <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'/>
+            <link
+                rel="preload"
+                href="/fonts/OpenSansCondensed-Light.ttf"
+                as="font"
+                crossOrigin=""
+            />
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+            <link rel="manifest" href="/site.webmanifest"/>
+            <title>Bake. Shave. Sushi.</title>
 
             <div className={styles.header}>
                 <a href="/">
@@ -40,11 +50,11 @@ export class Header extends React.Component {
                 </a>
                 <div className={styles.buttonsBar}>
                     <span
-                        className={(this.props.router.pathname === "/Gallery") ? [styles.headerButton + " " + styles.selected] : styles.headerButton}><a
-                        href={"/Gallery"}><img alt="Go to Gallery" src={"gallery.svg"}/></a></span>
+                        className={(this.props.router.pathname === "/gallery") ? [styles.headerButton + " " + styles.selected] : styles.headerButton}><a
+                        href={"/gallery"}><img alt="Go to Gallery" src={"gallery.svg"}/></a></span>
                     <span
-                        className={(this.props.router.pathname === "/Squares") ? [styles.headerButton + " " + styles.selected] : styles.headerButton}><a
-                        href={"/Squares"}><img alt="Go to Square view" src={"squares.svg"}/></a></span>
+                        className={(this.props.router.pathname === "/squares") ? [styles.headerButton + " " + styles.selected] : styles.headerButton}><a
+                        href={"/squares"}><img alt="Go to Square view" src={"squares.svg"}/></a></span>
                     <span
                         className={(this.props.router.pathname === "/") ? [styles.headerButton + " " + styles.selected] : styles.headerButton}><a
                         href={"/"}><img alt="Go to Map view" src={"pinicon.svg"}/></a></span>

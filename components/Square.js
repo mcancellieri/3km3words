@@ -20,7 +20,7 @@ export default class Square extends React.Component {
 
     static getCurrentIndex(selected) {
         for (let i = 0; i < Photos.length; i++) {
-            if (Photos[i].title === selected) {
+            if (Photos[i].filename === selected) {
                 return i;
             }
         }
@@ -55,12 +55,12 @@ export default class Square extends React.Component {
     render() {
 
         return (
-            <div id={this.state.photo.title} className={styles.square}>
-                <Image src={"/" + this.state.photo.title + ".webp"} layout="intrinsic"
+            <div id={this.state.photo.filename} className={styles.square}>
+                <Image src={"/" + this.state.photo.filename + ".webp"} layout="intrinsic"
                        width={this.getScaled(this.state.photo.width, this.state.photo.height).width}
                        height={this.getScaled(this.state.photo.width, this.state.photo.height).height}/>
-                <div className={this.state.photo.title}>
-                    {this.state.photo.title.replace(/\./g, " ").replace(/(^\w)|(\s\w)/g, letter => letter.toUpperCase())}
+                <div className={this.state.photo.filename}>
+                    {this.state.photo.title}
                 </div>
             </div>
         )

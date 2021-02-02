@@ -21,7 +21,7 @@ export default class Slider extends React.Component {
 
     static getCurrentIndex(selected) {
         for (let i = 0; i < Photos.length; i++) {
-            if (Photos[i].title === selected) {
+            if (Photos[i].filename === selected) {
                 return i;
             }
         }
@@ -31,13 +31,13 @@ export default class Slider extends React.Component {
     next() {
         let currentIndex = Slider.getCurrentIndex(this.state.selected);
         let newIndex = (currentIndex + 1) % Photos.length;
-        this.setState({selected: Photos[newIndex].title})
+        this.setState({selected: Photos[newIndex].filename})
     }
 
     prev() {
         let currentIndex = Slider.getCurrentIndex(this.state.selected);
         let newIndex = ((currentIndex === 0) ? 0 : currentIndex - 1) % Photos.length;
-        this.setState({selected: Photos[newIndex].title})
+        this.setState({selected: Photos[newIndex].filename})
     }
 
     componentDidMount() {
@@ -56,21 +56,21 @@ export default class Slider extends React.Component {
 
 
     render() {
-
+        console.log(this.state.selected);
         return (
             <div className={styles.slider}>
                 <div className={styles.next} onClick={this.next.bind(this)}><img src={"prev.svg"} alt={"next"}/></div>
                 <div className={styles.prev} onClick={this.prev.bind(this)}><img src={"prev.svg"} alt={"prev"}/></div>
                 <div className={styles.photoCardWrapper}>
                     {Photos.map((photo) =>
-                        <div key={photo.title} id={photo.title} className={styles.photoCard}
-                             style={{display: this.state.selected === photo.title ? "block" : "none"}}>
-                            <Image src={"/" + photo.title + ".webp"} layout="intrinsic"
+                        <div key={photo.filename} id={photo.filename} className={styles.photoCard}
+                             style={{display: this.state.selected === photo.filename ? "block" : "none"}}>
+                            <Image src={"/" + photo.filename + ".webp"} layout="intrinsic"
 
                                    width={this.getScaled(photo.width, photo.height).width}
                                    height={this.getScaled(photo.width, photo.height).height}/>
                             <div className={styles.title}>
-                                {photo.title.replace(/\./g, " ").replace(/(^\w)|(\s\w)/g, letter => letter.toUpperCase())}
+                                {photo.title}
                             </div>
                         </div>
                     )}

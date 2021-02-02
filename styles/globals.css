@@ -2,8 +2,16 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Open Sans Condensed', serif;
     color: #0c374c;
+}
+
+@font-face {
+    font-family: "Open Sans Condensed";
+    src: url('/fonts/OpenSansCondensed-Light.ttf');
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
 }
 
 a {

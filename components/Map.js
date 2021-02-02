@@ -25,8 +25,8 @@ function setupPhotoDetail(photoLocation) {
     let y = (Math.floor(photoLocation.id / 999) * multiplierY) + offsetYTop;
     let imageX = x - (150 / 2) + newsize / 2;
     let imageY = y - 170;
-    let filename = photoLocation.title.replace(/\s/g, ".").toLowerCase();
-    let title = photoLocation.title.replace(/\./g, " ").replace(/(^\w)|(\s\w)/g, letter => letter.toUpperCase());
+    let filename = photoLocation.filename;
+    let title = photoLocation.title;
 
     return {
         imageX: imageX,

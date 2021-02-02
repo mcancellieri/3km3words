@@ -15,6 +15,8 @@ export class Footer extends React.Component {
 
     render() {
         return <footer className={styles.footer}>
+            <a href={"/about"}>What is all of this about?</a>
+            &nbsp;|&nbsp;
             <a href="https://matteocancellieri.com">2021 Matteo Cancellieri</a>
         </footer>
     }
