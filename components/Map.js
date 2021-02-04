@@ -51,7 +51,7 @@ export default function Map() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1403 1080">
 
                 <MapSvg/>
-                {photoDetails.map((photo) => <Pin id={photo.id} photoDetail={photo}/>)}
+                {photoDetails.map((photo) => <Pin key={photo.id} photoDetail={photo}/>)}
                 <g id="thumb_container">
                     {photoDetails.map((photo) => <PhotoCard key={photo.id} id={photo.id + "card"} photoDetail={photo}
                                                             router={router}/>)}

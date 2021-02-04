@@ -40,7 +40,7 @@ function convert(path) {
 const locations = [];
 let results = [];
 fs.createReadStream("data/locations.tsv")
-    .pipe(csv.parse({headers: true, delimiter: '\t'}))
+    .pipe(csv.parse({headers: true, delimiter: '\t', trim: true}))
     .on('error', error => console.error(error))
     .on('data', row => locations.push(row))
     .on('end', () => start());
@@ -57,6 +57,7 @@ function start() {
 }
 
 function findByName(name) {
+    console.log(locations);
     for (let location of locations) {
         if (location.filename === name) {
             return location

@@ -3,6 +3,7 @@ import React from "react";
 import styles from '../styles/Home.module.css'
 import {withRouter} from 'next/router'
 import Head from "next/head";
+import {GA_TRACKING_ID} from '../lib/gtag'
 
 /**
  * @return {boolean}
@@ -41,7 +42,23 @@ export class Header extends React.Component {
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
             <link rel="manifest" href="/site.webmanifest"/>
             <title>Bake. Shave. Sushi.</title>
-
+            {/* Global Site Tag (gtag.js) - Google Analytics */}
+            <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            />
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+                }}
+            />
             <div className={styles.header}>
                 <a href="/">
                     <h1 className={styles.logo}>
